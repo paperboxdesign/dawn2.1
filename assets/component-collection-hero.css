@@ -1,7 +1,3 @@
-.collection-hero--with-image {
-  background-color: rgba(var(--color-foreground), 0.04);
-}
-
 .collection-hero__inner {
   display: flex;
   flex-direction: column;
