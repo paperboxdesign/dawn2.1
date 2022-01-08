@@ -12,7 +12,7 @@
             "bb_capitalize": true,
             "bb_font_size": 13,
             "bb_padding": 0,
-            "bb_top_padding": 0,
+            "bb_top_padding": 10,
             "bb_align": "left",
             "bb_color": "#5a5959"
           }
