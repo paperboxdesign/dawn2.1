@@ -9,7 +9,7 @@
     "colors_background_2": "#F3F3F3",
     "type_header_font": "assistant_n4",
     "type_body_font": "assistant_n4",
-    "card_style": "card",
+    "card_style": "standard",
     "favicon": "shopify:\/\/shop_images\/PaperBoxDesignCo_Ver3_square-white.png",
     "sections": {
       "announcement-bar": {
