@@ -76,7 +76,21 @@
     },
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "8882555360308167327": {
+        "type": "shopify:\/\/apps\/schema-breadcrumbs\/blocks\/schema-block\/b5b4b35d-8c76-40f1-b83c-b869ed5c50ef",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "7570552984445421165": {
+        "type": "shopify:\/\/apps\/yotpo-product-reviews-photos\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Default": {
