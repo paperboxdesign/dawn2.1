@@ -1,0 +1,303 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://pitchprint.io/rsc/js/client.js"></script>  
+
+  <div class="contact page-width page-width--narrow spaced-section">
+    <h2 class="title">3D Designer Login</h2>
+    
+    <div class="contact__fields">
+      <div class="field">
+        
+        <input class="field__input" 
+               autocomplete="email" 
+               type="text"
+               name="email"
+               id="email">
+
+        <label class="field__label" for="email">Email* </label>
+        
+      </div>
+    </div> 
+    
+    <div class="contact__fields">
+      <div class="field">
+        
+        <input class="field__input" 
+               autocomplete="name" 
+               type="text"
+               name="name"
+               id="name">
+
+        <label class="field__label" for="name">Name </label>
+        
+      </div>
+    </div>
+    
+    <div class="contact__fields">
+      <div class="field">
+        
+        <input class="field__input"  
+               type="text"
+               name="project_id"
+               id="project_id">
+
+        <label class="field__label" for="project_id">Project ID </label>
+        
+      </div>
+    </div>      
+                
+    <div class="contact__fields">
+      <div class="field">
+       
+        <input class="field__input" 
+               type="text" 
+               list="designs" 
+               name="design_id" 
+               id="design_id">
+
+        <datalist id="designs">
+          <option data-value="60827e926140c52afd82da9eb43e1478" value="4x4x4"></option>
+          <option data-value="71656602fa06a4a7c0bd7a9aafbd3b6d" value="VT4001-Love and Hearts"></option>
+          <option data-value="87b45fabf03a9c93b41a468c9d25eb25" value="VT4002-Pink and Red"></option>
+          <option data-value="c8b4dd2bab77ff48bf08f7f1fe98f97f" value="VT4003-White and Red"></option>
+          <option data-value="7ffff105778cc315b342827df6871a0f" value="VT4004-Pink and Gold"></option>
+          <option data-value="939038d4e9cb30496ae78d03eb804397" value="VT4005-Blue and Red"></option>
+          <option data-value="1bd1aa0034077013fd07e355a1fdc2d8" value="VT4006-Hand-Drawn Hearts"></option>
+          <option data-value="28128fc4e5e9b0b25ee950d94090b845" value="VT4007-Black and Gold"></option>
+          <option data-value="c1cd87216091b79ea6161dc76d7e6c71" value="VT4008-Pink Hearts and Blue Stripes"></option>
+          <option data-value="38c77b2a64514274a00824edbea2f30b" value="VT4009-Lacy Pink and White Hearts"></option>
+          <option data-value="3e250a027ea8429e4502d6028f226f87" value="VT4010-Heirloom Pink Hearts"></option>          
+        </datalist>  
+        
+        <label class="field__label" id="design_id_label" for="design_id">Design ID </label>        
+        
+      </div>  
+    </div>  
+
+    <div class="contact__fields">
+      <div class="field">
+
+        <label class="form__label" id=design_mode_label for="design_mode">Select Mode </label>
+        
+        <select class="select select__select" 
+            name="design_mode" 
+            id="design_mode">
+              <option value="edit">Edit Design </option>
+          	  <option value="new">New Design </option>	
+        </select>
+        
+      </div>  
+    </div>
+    
+	<div class="contact__fields">
+      <div class="field">
+        <button id="submit_btn" class="button">Launch Designer </button>
+      </div>  
+    </div>
+            
+  </div>
+	
+  <div id="pp_preview_div"></div> 	
+
+<script>
+  
+  document.getElementById("design_id").style.display = "none";
+  document.getElementById("design_id_label").style.display = "none";
+  document.getElementById("design_mode").style.display = "none";
+  document.getElementById("design_mode_label").style.display = "none";
+   
+  // get current url
+  var urlValue = $(location).attr('href'); 
+
+  // read url variables
+  (new URL(urlValue)).searchParams.forEach((x, y) =>
+      document.getElementById(y).value = x);
+          
+  // Launch Designer button pressed
+  function launchDesigner() {
+
+    if($("#email").val() == '') {
+      
+      alert( "Please enter an email address" );
+            
+      return;
+    }
+    else if($("#email").val() == 'admin')
+    {   
+      // admin access
+      document.getElementById('email').value = '';
+      document.getElementById('design_mode').value = 'new';
+
+      document.getElementById("design_id").style.display = "block";
+      document.getElementById("design_id_label").style.display = "block";
+      document.getElementById("design_mode").style.display = "block";
+      document.getElementById("design_mode_label").style.display = "block";
+      
+      return;
+    }    
+    else if($("#design_mode").val() == 'edit' && $("#project_id").val() == "") {
+      
+      alert( "Please enter a Project ID" );
+            
+      return;
+    }  
+    else if($("#design_mode").val() == 'new' && $("#design_id").val() == "") {
+      
+      alert( "Please enter a Design ID" );
+            
+      return;
+    }      
+           
+    // check if project ID populated, then switch to edit mode
+  	if ($( "#project_id" ).val()){   
+        document.getElementById('design_mode').value = 'edit';
+    }
+    
+    // form fields 
+    var nameValue = $( "#name" ).val();
+    var emailValue = $( "#email" ).val();
+    var modeValue = $( "#design_mode" ).val();   
+    var projectValue = $( "#project_id" ).val();
+    
+    var value = $('#design_id').val();
+    var designValue = $('#designs [value="' + value + '"]').data('value');
+    
+    // design ID manually typed
+    if (designValue == null) {
+      designValue = $( "#design_id" ).val();
+    }
+      
+    //Get handles to the UI elements we'll be using
+    var _previewDiv = document.getElementById('pp_preview_div');
+
+    var ppclient = new PitchPrintClient({
+      apiKey: 'kwik-boxes.myshopify.com',
+      designId: designValue,
+      mode: modeValue,
+      userId: emailValue,
+      userData: {firstname: nameValue, email: emailValue}, //lastname:    
+      projectId: projectValue,
+      custom: true
+    });
+    
+    //Function to run once the app is validated (ready to be used)
+    var appValidated = () => {      
+      ppclient.showApp();		
+    };
+
+    //Function to run once the user has saved their project
+    var projectSaved = (_val) => {
+            
+      let _data = _val.data; 
+      
+      if (_data && _data.previews && _data.previews.length) {
+        
+        // update Project ID
+        document.getElementById('project_id').value = _data.projectId;
+        
+        // switch to Edit mode
+        document.getElementById('design_mode').value = 'edit';
+        
+        // copy url with project id to clipboard
+        var newURL = urlValue + "?project_id=" + _data.projectId + "&" + "email=" + emailValue + "&" + "name=" + nameValue;
+        
+        navigator.clipboard.writeText(newURL);
+        
+        _previewDiv.innerHTML = _data.previews.reduce((_str, _prev) => `${_str}<img src="${_prev}">`, '');		//Show the preview images
+      }
+    }; 
+
+    //Attach events to the app. You can see a list of all the events here: https://docs.pitchprint.com
+    ppclient.on('app-validated', appValidated);
+    ppclient.on('project-saved', projectSaved);
+      
+  }
+  
+  $( "#submit_btn" ).on( "click", launchDesigner );
+  
+  $(document).keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+          launchDesigner();
+      }
+  });
+  
+  /*
+              <option value="87b45fabf03a9c93b41a468c9d25eb25">VT4002-Pink and Red</option>
+              <option value="c8b4dd2bab77ff48bf08f7f1fe98f97f">VT4003-White and Red</option>
+              <option value="7ffff105778cc315b342827df6871a0f">VT4004-Pink and Gold</option>
+              <option value="939038d4e9cb30496ae78d03eb804397">VT4005-Blue and Red</option>
+              <option value="1bd1aa0034077013fd07e355a1fdc2d8">VT4006-Hand-Drawn Hearts</option>
+              <option value="28128fc4e5e9b0b25ee950d94090b845">VT4007-Black and Gold</option>
+              <option value="c1cd87216091b79ea6161dc76d7e6c71">VT4008-Pink Hearts and Blue Stripes</option>
+              <option value="38c77b2a64514274a00824edbea2f30b">VT4009-Lacy Pink and White Hearts</option>
+              <option value="3e250a027ea8429e4502d6028f226f87">VT4010-Heirloom Pink Hearts</option>
+
+        <select class="select" 
+            name="design_id" 
+            id="design_id"
+          	>
+          	  <option value="">Select ID</option>	
+          	  <option value="60827e926140c52afd82da9eb43e1478">4x4x4</option>	
+              <option value="71656602fa06a4a7c0bd7a9aafbd3b6d">VT4001-Love and Hearts</option>
+              <option value="87b45fabf03a9c93b41a468c9d25eb25">VT4002-Pink and Red</option>
+              <option value="c8b4dd2bab77ff48bf08f7f1fe98f97f">VT4003-White and Red</option>
+              <option value="7ffff105778cc315b342827df6871a0f">VT4004-Pink and Gold</option>
+              <option value="939038d4e9cb30496ae78d03eb804397">VT4005-Blue and Red</option>
+              <option value="1bd1aa0034077013fd07e355a1fdc2d8">VT4006-Hand-Drawn Hearts</option>
+              <option value="28128fc4e5e9b0b25ee950d94090b845">VT4007-Black and Gold</option>
+              <option value="c1cd87216091b79ea6161dc76d7e6c71">VT4008-Pink Hearts and Blue Stripes</option>
+              <option value="38c77b2a64514274a00824edbea2f30b">VT4009-Lacy Pink and White Hearts</option>
+              <option value="3e250a027ea8429e4502d6028f226f87">VT4010-Heirloom Pink Hearts</option>
+        </select>
+
+  <div class="contact__fields">
+    <div class="field">
+
+      <label class="field__label field--with-error hidden" id="email_error">Please enter your email address </label>
+
+    </div>
+  </div>   
+
+  <div class="contact__fields">
+    <div class="field">
+
+      <input class="field__input"  
+             type="text"
+             name="design_selection"
+             id="design_selection">
+
+      <label class="field__label" id="design_selection_label" for="design_selection">Design ID </label>
+
+    </div>
+  </div>
+
+  <div id="saved_project_div"></div>
+ 
+  
+    // check if email is populated
+    //$(".error").hide();  
+	//var designValue = $( "#design_id" ).val();
+    //const article = document.getElementById("design_id");
+    //var designValue = article.dataset.design;
+    //var designValue = design_id.getAttribute("data-design");  
+    //else {
+       //alert( "2-" + designValue );
+    //}
+    
+    //alert($('#designs [value="' + value + '"]').data('value'));    
+    
+    //return; //*************************************  
+  
+  //You can console.log the _data variable to see all that's passed down
+        // debug info
+      //console.log(_data);
+        //alert( "project saved" );
+      //email.removeAttribute('hidden');
+      //email.setAttribute("class", "field--with-error");
+      //$("#email").after('<div></div><span class="error" "field field--with-error"> Please enter your email address</span>');
+  */  
+  
+  
+</script>  
