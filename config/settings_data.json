@@ -10,6 +10,11 @@
     "type_header_font": "assistant_n4",
     "type_body_font": "assistant_n4",
     "card_style": "standard",
+    "social_twitter_link": "https:\/\/www.twitter.com\/PaperBoxDesign",
+    "social_facebook_link": "https:\/\/www.facebook.com\/PaperBoxDesignCo\/",
+    "social_pinterest_link": "https:\/\/www.pinterest.com\/PaperBoxDesignCo\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/PaperBoxDesignCo\/",
+    "social_youtube_link": "https:\/\/www.youtube.com\/channel\/UCehScq3hhEsV5tzgWraN04A",
     "favicon": "shopify:\/\/shop_images\/PaperBoxDesignCo_Ver3_square-white.png",
     "sections": {
       "announcement-bar": {
