@@ -22,10 +22,9 @@
         "blocks": {
           "announcement-bar-0": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
-              "text": "Welcome to our store",
-              "color_scheme": "background-1",
+              "text": "25% Off Our Valentine's Day Gift Boxes!",
+              "color_scheme": "accent-1",
               "link": ""
             }
           }
