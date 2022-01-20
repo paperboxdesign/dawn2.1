@@ -17,6 +17,11 @@
 <footer class="footer color-{{ section.settings.color_scheme }} gradient">
   
 <div class="yotpo yotpo-reviews-carousel" 
+ data-header-customisation-enabled="1" 
+ data-header-customisation-color="#56575f" 
+ data-header-customisation-font-size="18" 
+ data-header-customisation-text="Customer Reviews" 
+ data-header-customisation-alignment="left" 
  data-background-color="transparent" 
  data-mode="top_rated" 
  data-type="both" 
@@ -24,7 +29,7 @@
  data-show-bottomline="1" 
  data-autoplay-enabled="1" 
  data-autoplay-speed="3000" 
- data-show-navigation="1">&nbsp;</div>  
+ data-show-navigation="1">&nbsp;</div>
   
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
     <div class="footer__content-top page-width">
