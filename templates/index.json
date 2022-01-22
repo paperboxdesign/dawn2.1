@@ -73,23 +73,6 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
-    "image_banner": {
-      "type": "image-banner",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/valentines_day_banner_1680x840_392ba93d-924c-4bd6-9c72-853d7f751221.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "adapt_height_first_image": false,
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
     "featured_products": {
       "type": "featured-collection",
       "settings": {
@@ -109,7 +92,6 @@
   },
   "order": [
     "1642871269286f5631",
-    "image_banner",
     "featured_products"
   ]
 }
