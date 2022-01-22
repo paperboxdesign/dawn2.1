@@ -1,7 +1,81 @@
 {
   "sections": {
+    "1642871269286f5631": {
+      "type": "slideshow",
+      "blocks": {
+        "1642871269187f2105-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/valentines_day_banner.jpg",
+            "heading": "",
+            "heading_size": "medium",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "da5fcbad-a3cc-4c0d-a599-aeaa29df1e55": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SeeYourDesignOnline_1680x420-01.png",
+            "heading": "",
+            "heading_size": "medium",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "1642871269187f2105-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SeeYourDesignOnline_1680x420-02.png",
+            "heading": "",
+            "heading_size": "medium",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "1642871269187f2105-0",
+        "da5fcbad-a3cc-4c0d-a599-aeaa29df1e55",
+        "1642871269187f2105-1"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/valentines_day_banner_1680x840_392ba93d-924c-4bd6-9c72-853d7f751221.jpg",
         "image_overlay_opacity": 0,
@@ -34,6 +108,7 @@
     }
   },
   "order": [
+    "1642871269286f5631",
     "image_banner",
     "featured_products"
   ]
