@@ -210,7 +210,8 @@
         
         navigator.clipboard.writeText(newURL);
         
-        _previewDiv.innerHTML = _data.previews.reduce((_str, _prev) => `${_str}<img src="${_prev}">`, '');		//Show the preview images
+        // Hide preview
+        //_previewDiv.innerHTML = _data.previews.reduce((_str, _prev) => `${_str}<img src="${_prev}">`, '');		//Show the preview images
       }
     }; 
 
