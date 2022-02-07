@@ -6,7 +6,7 @@
         "1642871269187f2105-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/valentines_day_banner.jpg",
+            "image": "shopify:\/\/shop_images\/generic_Etsy_banner.png",
             "heading": "",
             "heading_size": "medium",
             "subheading": "",
@@ -77,7 +77,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "Featured products",
-        "collection": "valentines-day",
+        "collection": "custom-printed-boxes",
         "products_to_show": 12,
         "show_view_all": true,
         "swipe_on_mobile": true,
