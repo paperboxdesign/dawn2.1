@@ -46,11 +46,9 @@
                 show_secondary_image: section.settings.show_secondary_image,
                 show_vendor: section.settings.show_vendor,
                 show_rating: section.settings.show_rating
-              %}              
-            </li>
-<div class="yotpo bottomLine" 
-data-product-id="{{ product.id }}"> 
-</div>              
+              %}
+              data-product-id="{{ product.id }}"> 
+            </li>              
           {%- endfor -%}
         </ul>
 
