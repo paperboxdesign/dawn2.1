@@ -13,6 +13,7 @@
             "bb_font_size": 13,
             "bb_padding": 0,
             "bb_top_padding": 10,
+            "bb_margin": 0,
             "bb_align": "left",
             "bb_color": "#5a5959"
           }
@@ -47,7 +48,7 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "dropdown"
           }
         },
         "quantity_selector": {
