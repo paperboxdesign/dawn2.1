@@ -49,10 +49,23 @@
                name="project_id"
                id="project_id">
 
-        <label class="field__label" for="project_id">Project ID </label>
+        <label class="field__label" id="project_id_label" for="project_id">Project ID </label>
         
       </div>
-    </div>        
+    </div> 
+    
+    <div class="contact__fields">
+      <div class="field">
+        
+        <input class="field__input"  
+               type="text"
+               name="saved_url"
+               id="saved_url">
+
+        <label class="field__label" id="saved_url_label" for="project_id">Saved Link </label>
+        
+      </div>
+    </div>     
     
 	<div class="contact__fields">
       <div class="field">
@@ -70,6 +83,12 @@
   //document.getElementById("design_id_label").style.display = "none";
   //document.getElementById("design_mode").style.display = "none";
   //document.getElementById("design_mode_label").style.display = "none";
+  
+  document.getElementById("project_id").style.display = "none";
+  document.getElementById("project_id_label").style.display = "none"; 
+  
+  document.getElementById("saved_url").style.display = "none";
+  document.getElementById("saved_url_label").style.display = "none";   
    
   // get current url
   var urlValue = $(location).attr('href'); 
@@ -125,6 +144,13 @@
       
       if (_data && _data.previews && _data.previews.length) {
         
+        // display project id field & label
+        document.getElementById("project_id").style.display = "block";
+        document.getElementById("project_id_label").style.display = "block";        
+        
+        document.getElementById("saved_url").style.display = "block";
+        document.getElementById("saved_url_label").style.display = "block";         
+        
         // update Project ID
         document.getElementById('project_id').value = _data.projectId;
         
@@ -135,7 +161,7 @@
         var newURL = urlValue + "?project_id=" + _data.projectId;
         
         // display URL for user to copy for future access
-        _previewDiv.innerHTML = newURL;
+        document.getElementById('saved_url').value = newURL;
           
         // copy url with project id to clipboard
         //navigator.clipboard.writeText(newURL);
