@@ -24,9 +24,7 @@
         <label class="field__label" id="design_id_label" for="design_id">Box Type </label>        
         
       </div>  
-    </div>  
 
-    <div class="contact__fields">
       <div class="field">
 
         <label class="form__label" id=design_mode_label for="design_mode">Select Mode </label>
@@ -39,9 +37,7 @@
         </select>
         
       </div>  
-    </div>
-    
-    <div class="contact__fields">
+
       <div class="field">
         
         <input class="field__input"  
@@ -52,22 +48,20 @@
         <label class="field__label" id="project_id_label" for="project_id">Project ID </label>
         
       </div>
-    </div> 
-    
-    <div class="contact__fields">
+
       <div class="field">
         
-        <input class="text-area field__input"  
-               type="text"
-               name="saved_url"
-               id="saved_url">
+        <textarea
+                  rows="5"
+                  class="text-area field__input"  
+                  type="text"
+                  name="saved_url"
+                  id="saved_url">
 
         <label class="field__label" id="saved_url_label" for="project_id">Saved Link </label>
         
       </div>
-    </div>     
-    
-	<div class="contact__fields">
+
       <div class="field">
         <button id="submit_btn" class="button">Launch Designer </button>
       </div>  
@@ -87,8 +81,8 @@
   //document.getElementById("project_id").style.display = "none";
   //document.getElementById("project_id_label").style.display = "none"; 
   
-  document.getElementById("saved_url").style.display = "none";
-  document.getElementById("saved_url_label").style.display = "none";   
+  //document.getElementById("saved_url").style.display = "none";
+  //document.getElementById("saved_url_label").style.display = "none";   
    
   // get current url
   var urlValue = $(location).attr('href'); 
