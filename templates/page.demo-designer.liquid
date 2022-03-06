@@ -77,6 +77,10 @@
         
       </div>
     </div> 
+
+    <div class="contact__fields">  
+		<p>Saved design link: <a id=saved_link>Design Link</a></p>
+    </div>      
     
     <div class="contact__fields">  
 		<p>Click here to <a href="https://etsy.com/shop/paperBoxDesignCo" target="_blank">Order Your Box Design on Etsy</a></p>
@@ -169,6 +173,9 @@
         
         // create url with project id
         var newURL = urlValue + "&project_id=" + _data.projectId;
+        
+        
+        document.getElementById('saved_link').value = newURL;
         
         // display URL for user to copy for future access
         document.getElementById('saved_url').value = newURL;
