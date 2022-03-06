@@ -76,11 +76,7 @@
         <label class="field__label" id="saved_url_label" for="project_id">Saved Design Link (copied to clipboard) </label>
         
       </div>
-    </div> 
-
-    <div class="contact__fields">  
-		<p>Saved design link: <a id=saved_link>Design Link</a></p>
-    </div>      
+    </div>  
     
     <div class="contact__fields">  
 		<p>Click here to <a href="https://etsy.com/shop/paperBoxDesignCo" target="_blank">Order Your Box Design on Etsy</a></p>
@@ -175,7 +171,7 @@
         var newURL = urlValue + "&project_id=" + _data.projectId;
         
         
-        document.getElementById('saved_link').value = newURL;
+        //document.getElementById('saved_link').value = newURL;
         
         // display URL for user to copy for future access
         document.getElementById('saved_url').value = newURL;
