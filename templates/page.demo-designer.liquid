@@ -88,7 +88,7 @@
     
     // form fields 
     //var nameValue = $( "#name" ).val();
-    var emailValue = $( "#email" ).val();
+    //var emailValue = $( "#email" ).val();
     var modeValue = $( "#design_mode" ).val();   
     var projectValue = $( "#project_id" ).val();
     
@@ -107,8 +107,8 @@
       apiKey: 'kwik-boxes.myshopify.com',
       designId: designValue,
       mode: modeValue,
-      userId: emailValue,
-      userData: {email: emailValue}, //lastname:    
+      userId: 'Etsy demo',
+      //userData: {email: emailValue}, //lastname:    
       projectId: projectValue,
       custom: true
     });
@@ -131,9 +131,13 @@
         // switch to Edit mode
         document.getElementById('design_mode').value = 'edit';
         
-        // copy url with project id to clipboard
+        // create url with project id
         var newURL = urlValue + "?project_id=" + _data.projectId;
         
+        // display URL for user to copy for future access
+        _previewDiv.innerHTML = newURL;
+          
+        // copy url with project id to clipboard
         //navigator.clipboard.writeText(newURL);
         
         // Hide preview
