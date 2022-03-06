@@ -89,8 +89,9 @@
   
   //document.getElementById("design_id").style.display = "none";
   //document.getElementById("design_id_label").style.display = "none";
-  //document.getElementById("design_mode").style.display = "none";
-  //document.getElementById("design_mode_label").style.display = "none";
+  
+  document.getElementById("design_mode").style.display = "none";
+  document.getElementById("design_mode_label").style.display = "none";
   
   document.getElementById("project_id").style.display = "none";
   document.getElementById("project_id_label").style.display = "none"; 
@@ -151,6 +152,9 @@
       let _data = _val.data; 
       
       if (_data && _data.previews && _data.previews.length) {
+        
+        document.getElementById("design_mode").style.display = "block";
+  		document.getElementById("design_mode_label").style.display = "block";
         
         // display project id field & label
         document.getElementById("project_id").style.display = "block";
