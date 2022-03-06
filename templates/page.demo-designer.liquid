@@ -1,0 +1,225 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://pitchprint.io/rsc/js/client.js"></script>  
+
+  <div class="contact page-width page-width--narrow spaced-section">
+    <h2 class="title">3D Designer Login</h2>
+    
+    <div class="contact__fields">
+      <div class="field">
+        
+        <input class="field__input" 
+               autocomplete="email" 
+               type="text"
+               name="email"
+               id="email">
+
+        <label class="field__label" for="email">Email* </label>
+        
+      </div>
+    </div> 
+    
+    <div class="contact__fields">
+      <div class="field">
+        
+        <input class="field__input" 
+               autocomplete="name" 
+               type="text"
+               name="name"
+               id="name">
+
+        <label class="field__label" for="name">Name </label>
+        
+      </div>
+    </div>
+    
+    <div class="contact__fields">
+      <div class="field">
+        
+        <input class="field__input"  
+               type="text"
+               name="project_id"
+               id="project_id">
+
+        <label class="field__label" for="project_id">Project ID </label>
+        
+      </div>
+    </div>      
+                
+    <div class="contact__fields">
+      <div class="field">
+       
+        <input class="field__input" 
+               type="text" 
+               list="designs" 
+               name="design_id" 
+               id="design_id">
+
+        <datalist id="designs">
+		  	<option data-value="e8d91ea69b29aa03aecd0b163398a5d1" value="1.5x1.5x4.25 RT 1oz/30ml bottle box"></option>
+          	<option data-value="d4cfaac98a4f58dc7f2e88e008851c0f" value="1.75x1.75x5 RT 2oz/60ml bottle box"></option>
+          	<option data-value="0ca1f0e467db2d1d1f514412b6a1ae88" value="2.25x2.25x5.5 RT 4oz/120ml bottle box"></option>
+          	<option data-value="16a0d2e4e555bca21f0e4098d3d2ea61" value="2x2x2 SL box"></option>
+            <option data-value="117e7a2d0d607b617ff38f38ad472f9b" value="3x3x3 SL box"></option>
+          	<option data-value="ab3e118c669b69020ba767210cfd8bef" value="3x3x4 SL box"></option>
+          	<option data-value="6ced334bd0db79c3df171865ca3cc48e" value="3.13x3.13x3.88 SL box"></option>
+          	<option data-value="96e48c9fc9646b92fb35685d48f19f94" value="4x4x2 SL box"></option>
+            <option data-value="e23aa324b6e4014b5dacf92c0ec95a84" value="4x4x4 SL box"></option>
+          	<option data-value="16847dce48f39b33643ca25f7131ddfb" value="4x4x5 SL box"></option>
+        </datalist>  
+        
+        <label class="field__label" id="design_id_label" for="design_id">Design ID </label>        
+        
+      </div>  
+    </div>  
+
+    <div class="contact__fields">
+      <div class="field">
+
+        <label class="form__label" id=design_mode_label for="design_mode">Select Mode </label>
+        
+        <select class="select select__select" 
+            name="design_mode" 
+            id="design_mode">
+              <option value="edit">Edit Design </option>
+          	  <option value="new">New Design </option>	
+        </select>
+        
+      </div>  
+    </div>
+    
+	<div class="contact__fields">
+      <div class="field">
+        <button id="submit_btn" class="button">Launch Designer </button>
+      </div>  
+    </div>
+            
+  </div>
+	
+  <div id="pp_preview_div"></div> 	
+
+<script>
+  
+  document.getElementById("design_id").style.display = "none";
+  document.getElementById("design_id_label").style.display = "none";
+  document.getElementById("design_mode").style.display = "none";
+  document.getElementById("design_mode_label").style.display = "none";
+   
+  // get current url
+  var urlValue = $(location).attr('href'); 
+
+  // read url variables
+  (new URL(urlValue)).searchParams.forEach((x, y) =>
+      document.getElementById(y).value = x);
+          
+  // Launch Designer button pressed
+  function launchDesigner() {
+
+    if($("#email").val() == '') {
+      
+      alert( "Please enter an email address" );
+            
+      return;
+    }
+    else if($("#email").val() == 'admin')
+    {   
+      // admin access
+      document.getElementById('email').value = '';
+      document.getElementById('design_mode').value = 'new';
+
+      document.getElementById("design_id").style.display = "block";
+      document.getElementById("design_id_label").style.display = "block";
+      document.getElementById("design_mode").style.display = "block";
+      document.getElementById("design_mode_label").style.display = "block";
+      
+      return;
+    }    
+    else if($("#design_mode").val() == 'edit' && $("#project_id").val() == "") {
+      
+      alert( "Please enter a Project ID" );
+            
+      return;
+    }  
+    else if($("#design_mode").val() == 'new' && $("#design_id").val() == "") {
+      
+      alert( "Please enter a Design ID" );
+            
+      return;
+    }      
+           
+    // check if project ID populated, then switch to edit mode
+  	if ($( "#project_id" ).val()){   
+        document.getElementById('design_mode').value = 'edit';
+    }
+    
+    // form fields 
+    var nameValue = $( "#name" ).val();
+    var emailValue = $( "#email" ).val();
+    var modeValue = $( "#design_mode" ).val();   
+    var projectValue = $( "#project_id" ).val();
+    
+    var value = $('#design_id').val();
+    var designValue = $('#designs [value="' + value + '"]').data('value');
+    
+    // design ID manually typed
+    if (designValue == null) {
+      designValue = $( "#design_id" ).val();
+    }
+      
+    //Get handles to the UI elements we'll be using
+    var _previewDiv = document.getElementById('pp_preview_div');
+
+    var ppclient = new PitchPrintClient({
+      apiKey: 'kwik-boxes.myshopify.com',
+      designId: designValue,
+      mode: modeValue,
+      userId: emailValue,
+      userData: {firstname: nameValue, email: emailValue}, //lastname:    
+      projectId: projectValue,
+      custom: true
+    });
+    
+    //Function to run once the app is validated (ready to be used)
+    var appValidated = () => {      
+      ppclient.showApp();		
+    };
+
+    //Function to run once the user has saved their project
+    var projectSaved = (_val) => {
+            
+      let _data = _val.data; 
+      
+      if (_data && _data.previews && _data.previews.length) {
+        
+        // update Project ID
+        document.getElementById('project_id').value = _data.projectId;
+        
+        // switch to Edit mode
+        document.getElementById('design_mode').value = 'edit';
+        
+        // copy url with project id to clipboard
+        var newURL = urlValue + "?project_id=" + _data.projectId + "&" + "email=" + emailValue + "&" + "name=" + nameValue;
+        
+        navigator.clipboard.writeText(newURL);
+        
+        // Hide preview
+        //_previewDiv.innerHTML = _data.previews.reduce((_str, _prev) => `${_str}<img src="${_prev}">`, '');		//Show the preview images
+      }
+    }; 
+
+    //Attach events to the app. You can see a list of all the events here: https://docs.pitchprint.com
+    ppclient.on('app-validated', appValidated);
+    ppclient.on('project-saved', projectSaved);
+      
+  }
+  
+  $( "#submit_btn" ).on( "click", launchDesigner );
+  
+  $(document).keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+          launchDesigner();
+      }
+  });
+  
