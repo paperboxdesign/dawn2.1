@@ -78,10 +78,10 @@
       "settings": {
         "title": "Featured products",
         "collection": "custom-printed-boxes",
-        "products_to_show": 6,
+        "products_to_show": 8,
         "show_view_all": true,
         "swipe_on_mobile": true,
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
