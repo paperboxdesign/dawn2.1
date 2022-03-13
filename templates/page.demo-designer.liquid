@@ -106,18 +106,18 @@
   // read url variables
   (new URL(urlValue)).searchParams.forEach((x, y) =>
       document.getElementById(y).value = x);
+  
+  // check if project ID populated, then switch to edit mode and display project id and hide box type
+  if ($( "#project_id" ).val()){   
+    document.getElementById('design_mode').value = 'edit';
+    document.getElementById("project_id").style.display = "block";
+    document.getElementById("project_id_label").style.display = "block";      
+    document.getElementById("design_id").style.display = "none";
+    document.getElementById("design_id_label").style.display = "none";      	
+  }  
           
   // Launch Designer button pressed
   function launchDesigner() {
-           
-    // check if project ID populated, then switch to edit mode and display project id and hide box type
-  	if ($( "#project_id" ).val()){   
-        document.getElementById('design_mode').value = 'edit';
-        document.getElementById("project_id").style.display = "block";
-        document.getElementById("project_id_label").style.display = "block";      
-        document.getElementById("design_id").style.display = "none";
-        document.getElementById("design_id_label").style.display = "none";      	
-    }
     
     // form fields 
     //var nameValue = $( "#name" ).val();
