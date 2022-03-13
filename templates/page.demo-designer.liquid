@@ -94,9 +94,6 @@
   document.getElementById("design_mode").style.display = "none";
   document.getElementById("design_mode_label").style.display = "none";
   
-  document.getElementById("project_id").style.display = "none";
-  document.getElementById("project_id_label").style.display = "none"; 
-  
   document.getElementById("saved_url").style.display = "none";
   document.getElementById("saved_url_label").style.display = "none";   
    
@@ -114,7 +111,12 @@
     document.getElementById("project_id_label").style.display = "block";      
     document.getElementById("design_id").style.display = "none";
     document.getElementById("design_id_label").style.display = "none";      	
-  }  
+  }
+  else
+  {
+    document.getElementById("project_id").style.display = "none";
+  	document.getElementById("project_id_label").style.display = "none"; 
+  }
           
   // Launch Designer button pressed
   function launchDesigner() {
