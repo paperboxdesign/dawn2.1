@@ -119,18 +119,7 @@
         </div>
       </div>
     
-      <div class="field">
-        <textarea
-          rows="10"
-          id="ContactForm-body"
-          class="text-area field__input"
-          name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
-        >
-          {{- form.body -}}
-        </textarea>
-        <label class="form__label field__label" for="ContactForm-body">Saved Design Link</label>
-      </div>    
+  
         
       <div class="contact__button">
         <button type="submit" id="submit-email_btn" class="button">
@@ -147,9 +136,6 @@
   
   document.getElementById("design_mode").style.display = "none";
   document.getElementById("design_mode_label").style.display = "none";
-  
-  document.getElementById("saved_url").style.display = "none";
-  document.getElementById("saved_url_label").style.display = "none";   
    
   // get current url
   var urlValue = $(location).attr('href'); 
