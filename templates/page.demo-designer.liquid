@@ -106,7 +106,7 @@
       <div class="contact__fields">
         <div class="field">
           <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'templates.contact.form.name' | t }}">
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+          <label class="field__label" id="ContactForm-name_label" or="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
         </div>
         <div class="field field--with-error">
           <input
@@ -125,7 +125,7 @@
             {% endif %}
             placeholder="{{ 'templates.contact.form.email' | t }}"
           >
-          <label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+          <label class="field__label" id="ContactForm-email_label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
           {%- if form.errors contains 'email' -%}
             <small class="contact__field-error" id="ContactForm-email-error">
               <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
@@ -176,9 +176,14 @@
   	document.getElementById("project_id_label").style.display = "none"; 
   }
   
+  // hide contact form until after project is saved
+  document.getElementById("ContactForm-name").style.display = "none";
+  document.getElementById("ContactForm-name_label").style.display = "none";
   
-    document.getElementById("ContactForm-name").style.display = "none";
-    document.getElementById("ContactForm-email").style.display = "none";    
+  document.getElementById("ContactForm-email").style.display = "none";   
+  document.getElementById("ContactForm-email_label").style.display = "none";   
+  
+  ContactForm-email_label
   
   // Launch Designer button pressed
   function launchDesigner() {
