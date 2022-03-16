@@ -71,7 +71,7 @@
 
 
   <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
-    <h3 class="title title-wrapper--no-top-margin">Please enter your email to receive a link to access your saved design</h3>
+    <h3 class="title title-wrapper--no-top-margin" id="email_header">Please enter your email to receive a link to access your saved design</h3>
     {%- form 'contact', id: 'ContactForm' -%}
       {%- if form.posted_successfully? -%}
         <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
@@ -177,7 +177,7 @@
   document.getElementById("ContactForm-email_label").style.display = "none";
   document.getElementById("submit-email_btn").style.display = "none";
   document.getElementById("ContactForm-body").style.display = "none";
-  //document.getElementById("email_header").style.display = "none";
+  document.getElementById("email_header").style.display = "none";
   
   //************
   
