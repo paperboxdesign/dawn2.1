@@ -129,7 +129,7 @@
         >
           {{- form.body -}}
         </textarea>
-        <label class="form__label field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
+        <label class="form__label field__label" id="ContactForm-body_label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
       </div>    
     
       <div class="contact__button">
@@ -177,6 +177,7 @@
   document.getElementById("ContactForm-email_label").style.display = "none";
   document.getElementById("submit-email_btn").style.display = "none";
   document.getElementById("ContactForm-body").style.display = "none";
+  document.getElementById("ContactForm-body_label").style.display = "none";
   document.getElementById("email_header").style.display = "none";
   
   //************
@@ -228,6 +229,8 @@
         document.getElementById("ContactForm-email_label").style.display = "block";
         document.getElementById("submit-email_btn").style.display = "block";
         document.getElementById("ContactForm-body").style.display = "block";
+        document.getElementById("ContactForm-body_label").style.display = "block";
+        document.getElementById("email_header").style.display = "block";        
         
         //$("header").removeClass("hidden");
         
