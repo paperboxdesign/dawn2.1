@@ -71,6 +71,7 @@
 
 
   <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+    <h3 class="title title-wrapper--no-top-margin">Please enter your email to receive a link to access your saved design</h3>
     {%- form 'contact', id: 'ContactForm' -%}
       {%- if form.posted_successfully? -%}
         <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
@@ -225,12 +226,12 @@
       if (_data && _data.previews && _data.previews.length) {
         
 		// display contact form
-        document.getElementById("ContactForm-name").style.display = "block";
-        document.getElementById("ContactForm-name_label").style.display = "block";
-        document.getElementById("ContactForm-email").style.display = "block";   
-        document.getElementById("ContactForm-email_label").style.display = "block";
-        document.getElementById("submit-email_btn").style.display = "block";
-        document.getElementById("ContactForm-body").style.display = "block";
+        //document.getElementById("ContactForm-name").style.display = "block";
+        //document.getElementById("ContactForm-name_label").style.display = "block";
+        //document.getElementById("ContactForm-email").style.display = "block";   
+        //document.getElementById("ContactForm-email_label").style.display = "block";
+        //document.getElementById("submit-email_btn").style.display = "block";
+        //document.getElementById("ContactForm-body").style.display = "block";
         
         //document.getElementById("saved_url").style.display = "block";
         //document.getElementById("saved_url_label").style.display = "block";         
