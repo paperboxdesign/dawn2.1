@@ -144,9 +144,6 @@
 
 <script>
   
-  //document.getElementById("design_id").style.display = "none";
-  //document.getElementById("design_id_label").style.display = "none";
-  
   document.getElementById("design_mode").style.display = "none";
   document.getElementById("design_mode_label").style.display = "none";
   
@@ -187,8 +184,6 @@
   function launchDesigner() {
     
     // form fields 
-    //var nameValue = $( "#name" ).val();
-    //var emailValue = $( "#email" ).val();
     var modeValue = $( "#design_mode" ).val();   
     var projectValue = $( "#project_id" ).val();
     
@@ -226,12 +221,12 @@
       if (_data && _data.previews && _data.previews.length) {
         
 		// display contact form
-        //document.getElementById("ContactForm-name").style.display = "block";
-        //document.getElementById("ContactForm-name_label").style.display = "block";
-        //document.getElementById("ContactForm-email").style.display = "block";   
-        //document.getElementById("ContactForm-email_label").style.display = "block";
-        //document.getElementById("submit-email_btn").style.display = "block";
-        //document.getElementById("ContactForm-body").style.display = "block";
+        document.getElementById("ContactForm-name").style.display = "block";
+        document.getElementById("ContactForm-name_label").style.display = "block";
+        document.getElementById("ContactForm-email").style.display = "block";   
+        document.getElementById("ContactForm-email_label").style.display = "block";
+        document.getElementById("submit-email_btn").style.display = "block";
+        document.getElementById("ContactForm-body").style.display = "block";
         
         //document.getElementById("saved_url").style.display = "block";
         //document.getElementById("saved_url_label").style.display = "block";         
