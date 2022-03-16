@@ -132,39 +132,7 @@
 
 <script>
   
-  document.getElementById("design_mode").style.display = "none";
-  document.getElementById("design_mode_label").style.display = "none";
-   
-  // get current url
-  var urlValue = $(location).attr('href'); 
 
-  // read url variables
-  (new URL(urlValue)).searchParams.forEach((x, y) =>
-      document.getElementById(y).value = x);
-  
-  // check if project ID populated, then switch to edit mode and display project id and hide box type
-  if ($( "#project_id" ).val()){   
-    document.getElementById('design_mode').value = 'edit';
-    document.getElementById("project_id").style.display = "block";
-    document.getElementById("project_id_label").style.display = "block";      
-    document.getElementById("design_id").style.display = "none";
-    document.getElementById("design_id_label").style.display = "none";
-    
-  }
-  else
-  {
-    document.getElementById("project_id").style.display = "none";
-  	document.getElementById("project_id_label").style.display = "none"; 
-  }
-  
-  // hide contact form until after project is saved
-  document.getElementById("ContactForm-name").style.display = "none";
-  document.getElementById("ContactForm-name_label").style.display = "none";
-  document.getElementById("ContactForm-email").style.display = "none";   
-  document.getElementById("ContactForm-email_label").style.display = "none";
-  document.getElementById("submit-email_btn").style.display = "none";
-  document.getElementById("ContactForm-body").style.display = "none";
-  //document.getElementById("email_header").style.display = "none";
   
   // Launch Designer button pressed
   function launchDesigner() {
