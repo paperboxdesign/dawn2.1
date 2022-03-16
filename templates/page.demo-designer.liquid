@@ -119,22 +119,19 @@
         </div>
       </div>
     
-      <div class="contact__fields">      
-        <div class="field">
-
-          <textarea
-                    rows="7"
-                    class="text-area field__input"  
-                    type="text"
-                    name="saved_url"
-                    id="saved_url">
-          </textarea>  
-
-          <label class="field__label" id="saved_url_label" for="project_id">Saved Design Link (copied to clipboard) </label>
-
-        </div>
-      </div>      
-    
+      <div class="field">
+        <textarea
+          rows="10"
+          id="ContactForm-body"
+          class="text-area field__input"
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+          placeholder="{{ 'templates.contact.form.comment' | t }}"
+        >
+          {{- form.body -}}
+        </textarea>
+        <label class="form__label field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
+      </div>    
+        
       <div class="contact__button">
         <button type="submit" id="submit-email_btn" class="button">
           {{ 'templates.contact.form.send' | t }}
@@ -184,6 +181,7 @@
   document.getElementById("ContactForm-email").style.display = "none";   
   document.getElementById("ContactForm-email_label").style.display = "none";
   document.getElementById("submit-email_btn").style.display = "none";
+  document.getElementById("ContactForm-body").style.display = "none";
   
   // Launch Designer button pressed
   function launchDesigner() {
@@ -232,10 +230,11 @@
         document.getElementById("ContactForm-name_label").style.display = "block";
         document.getElementById("ContactForm-email").style.display = "block";   
         document.getElementById("ContactForm-email_label").style.display = "block";
-        document.getElementById("submit-email_btn").style.display = "block";        
+        document.getElementById("submit-email_btn").style.display = "block";
+        document.getElementById("ContactForm-body").style.display = "block";
         
-        document.getElementById("saved_url").style.display = "block";
-        document.getElementById("saved_url_label").style.display = "block";         
+        //document.getElementById("saved_url").style.display = "block";
+        //document.getElementById("saved_url_label").style.display = "block";         
         
         // update Project ID
         document.getElementById('project_id').value = _data.projectId;
@@ -250,7 +249,7 @@
         //document.getElementById('saved_link').value = newURL;
         
         // display URL for user to copy for future access
-        document.getElementById('saved_url').value = newURL;
+        document.getElementById('ContactForm-body').value = newURL;
           
         // copy url with project id to clipboard
         navigator.clipboard.writeText(newURL);
